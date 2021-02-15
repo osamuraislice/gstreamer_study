@@ -1,3 +1,5 @@
+//libtool --mode=link gcc `pkg-config --cflags --libs gstreamer-1.0` -o fisheye fisheye.c
+
 #include <gst/gst.h>
 #include <glib.h>
 #include <stdio.h>
