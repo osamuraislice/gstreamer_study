@@ -34,12 +34,12 @@ main (int   argc,
 
   /* Set up the pipeline */
 
-  /* we set the input filename to the source element */
+  /* we set the input web-cam to the source element */
   g_object_set (G_OBJECT (src), "device", "/dev/video0", "io-mode", 0, NULL);
 
   filtercaps = gst_caps_new_simple(
     "video/x-raw",
-    "width",  G_TYPE_INT, 640,
+    "width",  G_TYPE_INT, 480,
     "height", G_TYPE_INT, 480,
     NULL);
   g_object_set (G_OBJECT(filter),"caps",filtercaps, NULL);
@@ -52,6 +52,7 @@ main (int   argc,
   gst_bin_add_many (GST_BIN (pipeline),
                     src, vscale, filter, vconv, fish, sink, NULL);
 
+  /* we link all elements */
   gst_element_link_many (src, vscale, filter, vconv, fish, sink, NULL);
 
   /* Set the pipeline to "playing" state*/
